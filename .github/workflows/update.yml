@@ -12,6 +12,7 @@ on:
     paths:
       - 'custom.rules'
       - 'build.mjs'
+      - 'export-v2rayn.mjs'
       - '.github/workflows/update.yml'
 permissions:
   contents: write
@@ -32,7 +33,7 @@ jobs:
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add shadowrocket.conf manifest.json rules/ads.list
+          git add shadowrocket.conf v2rayn-routing.json manifest.json rules/ads.list
           if ! git diff --cached --quiet; then
             git commit -m 'Update routing rules'
             git push

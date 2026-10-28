@@ -40,6 +40,24 @@ https://raw.githubusercontent.com/carelover/sr-self-conf/main/shadowrocket.conf
 
 ## 自行维护
 
+### Windows / v2rayN
+
+[下载 v2rayN 路由配置](https://raw.githubusercontent.com/carelover/sr-self-conf/main/v2rayn-routing.json)。这是路由规则数组，不是节点订阅，也不是完整 Xray 配置。
+
+在 v2rayN 路由设置中新建独立方案，通过“从文件导入规则”或复制文件内容后“从剪贴板导入规则”（以安装版本的菜单为准），保存并选用。不要向旧方案反复追加，否则会出现重复和优先级问题。
+
+- 适配 Xray 路由格式，使用 `direct`、`proxy`、`block`；节点和 DNS 保持客户端自己的设置。
+- 建议先保持域名策略 `AsIs`。域名按名单判断，中国 IP 规则用于 IP 目标；不会自动对所有未知域名查询 IP。
+- 如需未知域名按解析结果判断国内外，可另行测试 `IPOnDemand` 和 DNS 配置；当前局域网 IP 规则靠前，会增加域名解析范围，不能保证更快或更准确。
+- 当前有最终代理规则，不能简单改成 `IPIfNonMatch` 就声称会进行第二轮 DNS 分流：最终规则本身会匹配流量。
+- 连续相同出口的域名合并成规则组，保持与手机一致的优先顺序。广告组默认启用，禁用标记为“广告/阻断规则”的组可以排查广告误杀。
+- 本仓库每周同时生成两端配置；Windows 端仍需更新/重新导入路由。没有为本机设置计划任务，也没有修改本机现有路由数据库。
+- 不转换手机脚本、MITM、策略组或 DNS 设置。Apple 原规则保持不变。
+
+这里的自动分流是明确规则加 IP 分类，不会学习浏览行为，也不会自动在直连失败时重试代理。公共域名列表持续更新，个人例外持续保留。
+
+`[Host]` 中的 `server:system`（若所用版本支持该写法）指定使用系统 DNS 解析相关域名，与 `[Rule]` 中选择直连/代理不是同一件事。本次没有添加或修改 Apple Host/DNS 设置。
+
 个人分流规则在 `custom.rules`，生成逻辑在 `build.mjs`。修改后由工作流重新生成配置，避免直接编辑生成后的 `shadowrocket.conf`。
 
 当前广告规则优先于 `custom.rules`；需要放行某个被误拦截的域名时，应在生成器中将精确例外放到广告规则之前。详细说明见 [使用说明](使用说明.txt)。

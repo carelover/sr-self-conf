@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises';
 import {createHash} from 'node:crypto';
 import {fileURLToPath} from 'node:url';
+import {exportV2rayN,domainPolicy} from './export-v2rayn.mjs';
 process.chdir(fileURLToPath(new URL('.', import.meta.url)));
 const base='https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/';
 const names=['Global','ChinaMax'];
@@ -46,8 +47,15 @@ function route(host){for(const l of expanded){const [t,v,p]=l.split(',');if(t===
 for(const [host,want] of Object.entries({'www.bilibili.com':'DIRECT','api.bilibili.com':'DIRECT','www.taobao.com':'DIRECT','wx.qq.com':'DIRECT','www.icbc.com.cn':'DIRECT','captive.apple.com':'DIRECT','chatgpt.com':'PROXY','github.com':'PROXY','www.youtube.com':'PROXY','gemini.google.com':'PROXY','nas.local':'DIRECT'})) if(route(host)!==want) throw Error(`Routing regression: ${host}`);
 const adTest=ads.find(x=>x.startsWith('DOMAIN,'))?.split(',')[1];
 if(!adTest||route(adTest)!=='AdBlock')throw Error('Ad blocking priority regression');
+const v2rayn=exportV2rayN(expanded);
+const policies={DIRECT:'direct',PROXY:'proxy',REJECT:'block',AdBlock:'block'};
+for(const host of ['apps.apple.com','push.apple.com','cdn.mzstatic.com','icloud.com.cn','www.bilibili.com','www.taobao.com','chatgpt.com','github.com','gemini.google.com','nas.local',adTest,'unknown-example.invalid']){
+ if(domainPolicy(v2rayn,host)!==policies[route(host)])throw Error(`Cross-client regression: ${host}`);
+}
 await fs.mkdir('rules',{recursive:true});
 await fs.writeFile('rules/ads.list',adsRaw,'utf8');
 await fs.writeFile('shadowrocket.conf',conf,'utf8');
 await fs.writeFile('manifest.json',JSON.stringify(manifest,null,2)+'\n');
+await fs.writeFile('v2rayn-routing.json',JSON.stringify(v2rayn,null,2)+'\n');
+console.log(`v2rayN: ${v2rayn.length} ordered groups; cross-client checks passed.`);
 console.log(`Validated ${unique.length} rules; all domain smoke tests passed.`);
