@@ -1,0 +1,79 @@
+Shadowrocket 大陆日常分流 — 自有 GitHub 托管方案
+
+一、文件
+shadowrocket.conf：可直接导入的完整配置，不包含节点或凭据。
+custom.rules：你自己的规则，更新不会覆盖。自上而下首次匹配生效。
+build.mjs：生成器，只使用 Node 内置功能，不安装第三方依赖。
+manifest.json：本次来源 URL、内容 SHA256、采用数量。
+.github/workflows/update.yml：北京时间每周一 04:23 自动生成，也可手动运行。
+LICENSE：上游 blackmatrix7 的 GPL-2.0 许可证。保留本文件与来源声明。
+
+二、分流原则
+局域网优先直连；个人规则优先于公共规则；海外域名优先于国内域名；中国 IP 直连；最终兜底 PROXY。
+国内社交、支付、电商、银行、地图、视频、音乐通过 ChinaMax 域名集合覆盖，再以 GEOIP,CN 补充。
+海外搜索、GitHub、AI、社交和流媒体通过 Global 及个人补充规则代理。
+Apple 推送、App Store、下载 CDN 和中国 iCloud 显式直连；其他 Apple 服务按公共规则判断。
+DNS 使用阿里/腾讯国内 DoH，以国内解析和可用性为优先；加密 DNS 并不保证海外解析不受干扰，也不保证全部 DNS 查询经代理。
+默认关闭 IPv6，以减少双栈差异；需要 IPv6 时修改生成器并在实际网络验证。
+不屏蔽 UDP443，不开启 HTTPS 解密、脚本或重写；广告拦截使用独立的秋风纯广告规则集。
+PROXY 使用小火箭当前选择的节点；本配置不提供节点或自动选择地区。AI/流媒体能否使用还取决于节点地区、IP 和账号。
+微软/OneDrive、国际 iCloud 等跨国服务按公共规则，若你当地直连更快，可自行在 custom.rules 加优先规则。
+不能保证所有应用永远命中正确路径；误分流时把具体域名加到个人规则。
+
+三、上传 GitHub
+建议新建独立公开仓库，例如 shadowrocket-rules，默认分支 main。
+只上传本目录中的文件，必须包括隐藏目录 .github/workflows；不要上传 itsm 根目录，那里存在私钥连接资料等敏感信息。
+使用 git 上传最可靠；网页上传时确认工作流目录完整。
+仓库 Actions 设置需允许工作流运行和写入仓库。如果分支保护阻止机器人直接提交，应改成 PR 更新流程。
+首次上传后，在 Actions -> Update routing weekly -> Run workflow 手动运行一次。
+配置链接（替换用户名和仓库名，分支不是 main 时也修改）：
+https://raw.githubusercontent.com/你的用户名/shadowrocket-rules/main/shadowrocket.conf
+本方案不需要个人访问令牌，也不要把 token 加到公开 URL。
+
+四、小火箭使用
+配置 -> 添加远程配置，粘贴上述 Raw 链接，下载后选中使用；首页全局路由使用“配置”，选择已有节点并连接。
+已经生成的 shadowrocket.conf 也可先从本地导入测试。
+检查微信/支付宝、国内视频、GitHub、Google、AI 和局域网访问。
+如有其他模块/重写，其效果可能叠加；测试时确认当前启用内容。
+GitHub 自动更新不会主动推送到手机。需要在小火箭中更新远程配置；若当前版本提供自动更新选项，启用它并验证更新日期。
+若版本没有相应设置，可使用该版本提供的快捷指令更新动作搭配 iOS 每周个人自动化；未在你的手机上配置或验证，不保证后台定时执行。
+Raw 链接在大陆可能需要先连接已有代理才能下载；国内外分流规则内嵌；广告规则首次使用需单独下载，后续使用客户端缓存并需要刷新更新。
+
+五、自主修改与回滚
+在 custom.rules 添加，例如：
+DOMAIN-SUFFIX,example.com,DIRECT
+DOMAIN-SUFFIX,example.org,PROXY
+DOMAIN,ads.example.org,REJECT
+仅支持 DOMAIN/DOMAIN-SUFFIX 和 DIRECT/PROXY/REJECT，防止个人文件意外插入其他配置。
+修改后推送会自动生成配置；不要直接修改 shadowrocket.conf，下一次生成会覆盖。
+若要冻结更新，在 GitHub Actions 停用此工作流；当前配置仍可用。
+若更新有问题，停用工作流并通过 Git 历史恢复 shadowrocket.conf 和 manifest.json，再更新手机配置。
+上游单项规则数量变化超过 25% 会失败，先查看来源差异，再手动运行并勾选 allow_large_change。
+规则格式和数量检查只能发现部分异常，不能判断每个域名是否合理；需要结合提交差异审查。
+每周任务有可能延迟。GitHub 公共仓库长期无活动（官方说明为 60 天）可能停用定时工作流，需要重新启用；因此不能承诺永久无人值守。
+GEOIP,CN 使用小火箭自身的 GeoIP 数据，也应保持应用/数据库更新。
+
+六、来源与取舍
+数据来源：https://github.com/blackmatrix7/ios_rule_script
+采用 rule/Shadowrocket/Global/Global_Domain.list 和 ChinaMax/ChinaMax_Domain.list。
+国内外分流只采用精确域名与域名后缀，排除 USER-AGENT、宽泛关键词和上游 IP 条目，减少无解密环境无效规则及共享 CDN 误匹配；排除 ms 整个顶级域名的直连项。
+同一规则去重，跨策略冲突按上面的优先级处理，不宣称所有语义冲突均已消除。
+结构参考：https://github.com/Johnshall/Shadowrocket-ADBlock-Rules-Forever
+仅借鉴大陆直连/海外代理方式，没有引入它的广告、脚本和解密规则。
+GitHub 定时说明：https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule
+
+本地完成生成器格式检查与代表域名分流测试；尚未在你的 iPhone 上导入验证，也未替你上传 GitHub。
+
+
+2026-10-28 广告拦截修订（本节优先于旧说明）
+保留原 Global/ChinaMax 完整分流及 Apple 设置，只增加秋风 Only.Ads 广告过滤。
+广告规则在原有个人规则及国内直连规则前执行，避免 qq.com、cn 等大范围直连绕过广告过滤。
+AdBlock 默认 REJECT；若有误杀，在小火箭策略组将 AdBlock 切 DIRECT，可临时关闭整个广告过滤。
+要永久放行单个广告误杀域名，需在生成器中放到 RULE-SET 前；旧 custom.rules 位于广告规则之后，不能覆盖广告拦截。
+该规则可减少开屏、摇一摇等广告请求，但不会限制传感器，不能保证处理所有 App 或缓存广告。
+初始配置使用上游广告规则链接。上传本目录全部文件并运行 Actions 后，自动改成你仓库 rules/ads.list 地址，每周同步受控快照。
+分流和广告规则均有格式/数量检查，异常时不会提交；广告源失败也保留上一个已发布版本。
+手机需要更新主配置和广告规则集；GitHub 更新不会自动推送到手机。
+广告规则独立存储，不合并进 GPL-2.0 分流数据；保留 licenses/AWAvenue-GPL-3.0.txt。
+来源：https://github.com/TG-Twilight/AWAvenue-Ads-Rule
+只需使用本版本，无需同时安装秋风广告模块，避免重复拦截及开关不一致。

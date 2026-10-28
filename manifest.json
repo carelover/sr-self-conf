@@ -1,0 +1,24 @@
+{
+  "sources": [
+    {
+      "name": "Global",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/Global/Global_Domain.list",
+      "sha256": "63675c462355bdc3d791cb1ec46615e0de0b699e97336113b923d78aefebf86e",
+      "accepted": 35122,
+      "filter": "DOMAIN and DOMAIN-SUFFIX only; exclude ms TLD"
+    },
+    {
+      "name": "ChinaMax",
+      "url": "https://raw.githubusercontent.com/blackmatrix7/ios_rule_script/master/rule/Shadowrocket/ChinaMax/ChinaMax_Domain.list",
+      "sha256": "c0d54d3e4ee613e4b8cf92d81474ee94240c870864c633628104b5129b2bcc6e",
+      "accepted": 110427,
+      "filter": "DOMAIN and DOMAIN-SUFFIX only; exclude ms TLD"
+    },
+    {
+      "name": "AWAvenue-OnlyAds",
+      "url": "https://raw.githubusercontent.com/TG-Twilight/AWAvenue-Ads-Rule/main/Filters/AWAvenue-Ads-Rule-Surge-RULE-SET-Only.Ads.list",
+      "sha256": "56b6ce4396c6c7168a3607697e88cee3fc8d55998549aa0ded8d4741170785db",
+      "accepted": 665
+    }
+  ]
+}
