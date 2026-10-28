@@ -6,8 +6,6 @@
 
 ## 扫码获取配置
 
-下面二维码包含本仓库的配置文件网址，使用干净的二维码图片。点击图片可查看原图。
-
 [![Shadowrocket 配置链接二维码](assets/shadowrocket-config-qr.png)](assets/shadowrocket-config-qr.png)
 
 1. 在电脑或另一台设备上打开此页面，使用手机扫码读取链接。也可以保存图片，使用支持从相册识别二维码的扫码工具。
