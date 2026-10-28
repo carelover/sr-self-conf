@@ -6,7 +6,7 @@
 
 ## 扫码获取配置
 
-下面二维码包含本仓库的配置文件网址。截图保留原始二维码像素，点击图片可查看原图。
+下面二维码包含本仓库的配置文件网址，使用干净的二维码图片。点击图片可查看原图。
 
 [![Shadowrocket 配置链接二维码](assets/shadowrocket-config-qr.png)](assets/shadowrocket-config-qr.png)
 
@@ -44,14 +44,29 @@ https://raw.githubusercontent.com/carelover/sr-self-conf/main/shadowrocket.conf
 
 [下载 v2rayN 路由配置](https://raw.githubusercontent.com/carelover/sr-self-conf/main/v2rayn-routing.json)。这是路由规则数组，不是节点订阅，也不是完整 Xray 配置。
 
-在 v2rayN 路由设置中新建独立方案，通过“从文件导入规则”或复制文件内容后“从剪贴板导入规则”（以安装版本的菜单为准），保存并选用。不要向旧方案反复追加，否则会出现重复和优先级问题。
+**推荐使用 URL 更新，无需每次手动下载文件。**
+
+1. 打开 v2rayN 的路由设置，新建一个独立路由方案。
+2. 在编辑该方案时，将下面地址填入 `URL` 字段并保存。
+3. 在规则编辑页面执行“从 URL 导入规则”（具体中文名称以安装版本为准）。
+4. 如果提示追加或替换，选择**替换现有规则**，不要反复追加。
+5. 保存方案并设为当前使用的路由。
+6. 后续用同一 URL 再执行导入，即可获取仓库最新规则。
+
+```text
+https://raw.githubusercontent.com/carelover/sr-self-conf/main/v2rayn-routing.json
+```
+
+这是**路由规则的远程地址**，不要添加到“节点订阅分组”。也可使用文件/剪贴板导入作为备用。
+
+已核对 v2rayN 的 [URL 导入实现](https://github.com/2dust/v2rayN/blob/master/v2rayN/ServiceLib/ViewModels/RoutingRuleSettingViewModel.cs)。该入口会读取路由方案的 URL 并询问追加/替换；不能据此认为它有与节点订阅相同的定时更新机制。
 
 - 适配 Xray 路由格式，使用 `direct`、`proxy`、`block`；节点和 DNS 保持客户端自己的设置。
 - 建议先保持域名策略 `AsIs`。域名按名单判断，中国 IP 规则用于 IP 目标；不会自动对所有未知域名查询 IP。
 - 如需未知域名按解析结果判断国内外，可另行测试 `IPOnDemand` 和 DNS 配置；当前局域网 IP 规则靠前，会增加域名解析范围，不能保证更快或更准确。
 - 当前有最终代理规则，不能简单改成 `IPIfNonMatch` 就声称会进行第二轮 DNS 分流：最终规则本身会匹配流量。
 - 连续相同出口的域名合并成规则组，保持与手机一致的优先顺序。广告组默认启用，禁用标记为“广告/阻断规则”的组可以排查广告误杀。
-- 本仓库每周同时生成两端配置；Windows 端仍需更新/重新导入路由。没有为本机设置计划任务，也没有修改本机现有路由数据库。
+- 本仓库每周同时生成两端配置；Windows 端仍需通过保存的 URL 更新路由。没有为本机设置计划任务，也没有修改本机现有路由数据库。
 - 不转换手机脚本、MITM、策略组或 DNS 设置。Apple 原规则保持不变。
 
 这里的自动分流是明确规则加 IP 分类，不会学习浏览行为，也不会自动在直连失败时重试代理。公共域名列表持续更新，个人例外持续保留。
@@ -68,3 +83,4 @@ https://raw.githubusercontent.com/carelover/sr-self-conf/main/shadowrocket.conf
 - 广告过滤：[TG-Twilight/AWAvenue-Ads-Rule](https://github.com/TG-Twilight/AWAvenue-Ads-Rule) 的 Only.Ads 版本，独立保存并保留 [GPL-3.0 许可证](licenses/AWAvenue-GPL-3.0.txt)。
 
 已完成生成器与代表域名的分流检查；不同 iOS、Shadowrocket 和 App 版本的实际效果仍需在设备上验证。
+
