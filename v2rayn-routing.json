@@ -64,6 +64,123 @@
     "Id": "88bb3b45f95bef02c3c4eca2b5e3f12d"
   },
   {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "111.20.26.186/32"
+    ],
+    "Id": "b7964bbda0f258aa53d1d3189aea2e5c"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "112.84.130.73/32"
+    ],
+    "Id": "cd98093eacbc015e0912a2b00d70ea6f"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "116.142.251.100/32"
+    ],
+    "Id": "ad38070c266252d623be53dc6027302f"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "116.177.251.215/32"
+    ],
+    "Id": "715f262966f95e2555cdb1526347d012"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "120.77.173.114/32"
+    ],
+    "Id": "356e94881d4bab3257d18773e0aefcc4"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "123.56.23.22/32"
+    ],
+    "Id": "cf99514967c013155c960b9d74d1de8c"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "14.29.101.160/32"
+    ],
+    "Id": "a69b3b77fad38d49a162336baa37d86f"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "14.29.101.168/32"
+    ],
+    "Id": "3f40541f3e2778d33848446030907f04"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "14.29.101.169/32"
+    ],
+    "Id": "7e405d113bf9d6c6bee6c792ab666b6f"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "182.254.116.116/32"
+    ],
+    "Id": "e579b5a5582471f652684ef17070ec30"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "203.205.137.89/32"
+    ],
+    "Id": "958368d7c1b015df03a22c66a56052ae"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "218.77.192.51/32"
+    ],
+    "Id": "f2edcaa1eda89bf5f3d5440aff5a467a"
+  },
+  {
+    "Remarks": "局域网地址直连",
+    "OutboundTag": "block",
+    "Enabled": true,
+    "Ip": [
+      "38.190.225.166/32"
+    ],
+    "Id": "5622b0437b6cd0fa1f188ff85c4e0806"
+  },
+  {
     "Remarks": "广告/阻断规则（可禁用）",
     "OutboundTag": "block",
     "Enabled": true,
@@ -141,17 +258,16 @@
       "full:admobile.top",
       "full:adreq.vivo.com.cn",
       "full:ads-api-o.api.leiniao.com",
-      "full:ads-api.tiktok.com",
       "full:ads-api.twitter.com",
       "full:ads-img-al.xhscdn.com",
+      "full:ads-img-bak.xhscdn.com",
       "full:ads-img-qc.xhscdn.com",
-      "full:ads-jp.tiktok.com",
       "full:ads-marketing-vivofs.vivo.com.cn",
       "full:ads-sdk-api.ranfenghd.com",
-      "full:ads-sg.tiktok.com",
       "full:ads-shopping.shouqianba.com",
       "full:ads-video-al.xhscdn.com",
       "full:ads-video-qc.xhscdn.com",
+      "full:ads-vp5.xhscdn.com",
       "full:ads.95516.com",
       "full:ads.adfunlink.com",
       "full:ads.auctions.yahoo.com",
@@ -169,7 +285,6 @@
       "full:ads.raidrive.com",
       "full:ads.servebom.com",
       "full:ads.service.kugou.com",
-      "full:ads.tiktok.com",
       "full:ads.v3mh.com",
       "full:ads.youtube.com",
       "full:ads.zhinengxiyifang.cn",
@@ -206,7 +321,6 @@
       "full:adsmind.ugdtimg.com",
       "full:adsmoloco.com",
       "full:adsp.xunlei.com",
-      "full:adspecs.yahoo.com",
       "full:adstat.izuiyou.com",
       "full:adstats.tencentmusic.com",
       "full:adstextview.qq.com",
@@ -214,9 +328,7 @@
       "full:adstore-index-1252524079.file.myqcloud.com",
       "full:adstrategy.biz.weibo.com",
       "full:adstudio-assets.scdn.co",
-      "full:adstudio.spotify.com",
       "full:adtago.s3.amazonaws.com",
-      "full:adtech.yahooinc.com",
       "full:adtrack.quark.cn",
       "full:adtracker.adfunlink.com",
       "full:adtracker.medproad.com",
@@ -224,12 +336,6 @@
       "full:adv-api.shenshiads.com",
       "full:adv.sec.intl.miui.com",
       "full:adv.sec.miui.com",
-      "full:advertising-api-eu.amazon.com",
-      "full:advertising-api-fe.amazon.com",
-      "full:advertising-api.amazon.com",
-      "full:advertising.apple.com",
-      "full:advertising.yahoo.com",
-      "full:advertising.yandex.ru",
       "full:advice-ads.s3.amazonaws.com",
       "full:adview.cn",
       "full:adx-ad.smart-tv.cn",
@@ -245,6 +351,7 @@
       "full:adx-strategy-api-cn.statisticslinks.com",
       "full:adx.ads.heytapmobi.com",
       "full:adx.ads.oppomobile.com",
+      "full:adx.anythinktech.com",
       "full:adx.appsdk.com.cn",
       "full:adx.sogaha.cn",
       "full:adx.tuia.cn",
@@ -309,7 +416,7 @@
       "full:beizi.biz",
       "full:bgg.baidu.com",
       "full:bianxian.com",
-      "full:bingads.microsoft.com",
+      "full:bid.shanghailingye.cn",
       "full:biz.weibo.com",
       "full:bj-td-menta-01-callback.advlion.com",
       "full:bj.ad.track.66mobi.com",
@@ -343,7 +450,10 @@
       "full:click.liftoff.io",
       "full:click4.chinaliftoff.io",
       "full:cloooud.com",
+      "full:cn-api-sec.anythinktech.com",
       "full:cn-api.anythinktech.com",
+      "full:cn-da.anythinktech.com",
+      "full:cn-tk.anythinktech.com",
       "full:commercial.shouji.360.cn",
       "full:conf.hpplay.cn",
       "full:config.chsmarttv.com",
@@ -351,10 +461,10 @@
       "full:config.unityads.unity3d.com",
       "full:cpc-service-square.aiclk.com",
       "full:cpro.baidustatic.com",
-      "full:csjplatform.com",
       "full:d.applovin.com",
       "full:d.applvn.com",
       "full:da.anythinktech.com",
+      "full:da.statisticslinks.com",
       "full:data.ads.oppomobile.com",
       "full:datacollection.uve.weibo.com",
       "full:dc.sigmob.cn",
@@ -448,6 +558,7 @@
       "full:l6.fancyapi.com",
       "full:launcher.smart-tv.cn",
       "full:launcherimg.smart-tv.cn",
+      "full:lf-event-manager.oceanengine.com",
       "full:lf3-ad-union-sdk.pglstatp-toutiao.com",
       "full:lf6-ad-union-sdk.pglstatp-toutiao.com",
       "full:lftxali.fancyapi.com",
@@ -608,6 +719,7 @@
       "full:smad.ms.zhangyue.net",
       "full:smartad.10010.com",
       "full:sms.ads.oppomobile.com",
+      "full:ssapi.anythinktech.com",
       "full:ssp.cloooud.com",
       "full:static-s.iqiyi.com",
       "full:static.ads-twitter.com",
@@ -640,6 +752,7 @@
       "full:test.ad.xiaomi.com",
       "full:test.e.ad.xiaomi.com",
       "full:tk.anythinktech.com",
+      "full:tk.statisticslinks.com",
       "full:tmead.y.qq.com",
       "full:tmeadcomm.y.qq.com",
       "full:tpc.googlesyndication-cn.com",
@@ -655,8 +768,6 @@
       "full:tx-ad.a.yximgs.com",
       "full:tytx.m.cn.miaozhen.com",
       "full:uapi.ads.heytapmobi.com",
-      "full:union.baidu.cn",
-      "full:union.baidu.com",
       "full:unityads.unity3d.com",
       "full:update0.aiclk.com",
       "full:us.l.qq.com",
@@ -723,7 +834,6 @@
       "domain:adintl.cn",
       "domain:adsmoloco.com",
       "domain:adx.adwangmai.com",
-      "domain:data.hicloud.com",
       "domain:ubixioe.com",
       "domain:unityads.unity3d.com",
       "domain:vlion.cn",
@@ -734,7 +844,7 @@
       "keyword:-ad.wtzw.com",
       "keyword:-be-pack-sign.pglstatp-toutiao.com"
     ],
-    "Id": "be4673441a912e1b35067f167f6f3147"
+    "Id": "364cacd299e369f15b02cb94369d5544"
   },
   {
     "Remarks": "域名代理",
@@ -750,7 +860,7 @@
       "domain:google.com",
       "domain:googleapis.com"
     ],
-    "Id": "1f316844acc3ab1ed72904c4929ce066"
+    "Id": "3183fb8c051968ace9602ef3b91e3e78"
   },
   {
     "Remarks": "域名直连",
@@ -783,7 +893,7 @@
       "domain:alidns.com",
       "domain:doh.pub"
     ],
-    "Id": "a024ade7db625e64ffa71856880eda53"
+    "Id": "795fd06d40f3c9e11e555ffc9da33370"
   },
   {
     "Remarks": "域名代理",
@@ -35906,7 +36016,7 @@
       "domain:zzux.com",
       "domain:zzycdz.com"
     ],
-    "Id": "634fe9d047149fd85f2f01c20d832df3"
+    "Id": "7b6977170734a1aa2f754a9c87899b80"
   },
   {
     "Remarks": "域名直连",
@@ -146325,7 +146435,7 @@
       "domain:zzzzaaaa.com",
       "domain:zzzzzz.me"
     ],
-    "Id": "173eff89a373a0463e5c2c7a551685a6"
+    "Id": "0574a57ce7d9e6411d56d1ac6a54de27"
   },
   {
     "Remarks": "中国 IP 直连",
@@ -146334,13 +146444,13 @@
     "Ip": [
       "geoip:cn"
     ],
-    "Id": "170f38d692bebbf70b439d23e1540f54"
+    "Id": "a8af298765b803608e820ab571a363a8"
   },
   {
     "Remarks": "未匹配流量代理",
     "OutboundTag": "proxy",
     "Enabled": true,
     "Port": "0-65535",
-    "Id": "cf5e26fab28da9949afcb5be6c8520fb"
+    "Id": "ae738ad216acb39c9e7cf966ea6a2e86"
   }
 ]
